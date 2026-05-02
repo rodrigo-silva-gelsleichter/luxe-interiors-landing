@@ -1,0 +1,17 @@
+// utils/fetchPagina.ts
+
+// Tipo que representa a estrutura do JSON do WordPress
+interface WPPage {
+  id: number;
+  slug: string;
+  title: { rendered: string };
+  content: { rendered: string };
+}
+
+export async function fetchPagina(slug: string): Promise<WPPage> {
+  const res = await fetch(
+    `https://seusite.com/wp-json/wp/v2/pages?slug=${slug}&_embed`
+  );
+  const data: WPPage[] = await res.json();
+  return data[0];
+}
