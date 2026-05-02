@@ -1,6 +1,29 @@
+import { useEffect, useState } from "react";
 import heroImage from "@/assets/hero-kitchen.jpg";
+import { fetchPagina } from "../../utils/fetchPagina";
+import { parseContent } from "../../utils/parseContent";
+
+type Conteudo = ReturnType<typeof parseContent>;
+
 
 const Hero = () => {
+
+  const [conteudo, setConteudo] = useState<Conteudo | null>(null);
+
+  useEffect(() => {
+    fetchPagina("pagina-1")
+      .then(pagina => {
+        // fetchPagina trouxe o JSON completo da página
+        // parseContent separa o HTML em paragrafos, titulos, imagens...
+        const elementos = parseContent(pagina.content.rendered);
+        setConteudo(elementos);
+      })
+      .catch(() => {
+        console.warn("Não foi possível buscar o conteúdo do WordPress.");
+      });
+  }, []);
+
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
@@ -14,8 +37,10 @@ const Hero = () => {
         <div className="absolute inset-0 bg-primary/60" />
       </div>
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* titulos[0] = primeiro título do conteúdo da página no WordPress */}
         <p className="font-body text-champagne tracking-[0.35em] uppercase text-sm mb-6 animate-fade-in">
-          Móveis Planejados de Luxo
+          {conteudo ? conteudo.titulos[0]?.textContent : "Móveis Planejados"}
+          {/*          ↑ se carregou, usa o WP   ↑ senão, mostra o texto padrão */}
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-primary-foreground leading-tight mb-8 animate-fade-up">
           Transformamos Lares
