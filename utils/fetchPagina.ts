@@ -10,7 +10,7 @@ interface WPPage {
 
 export async function fetchPagina(slug: string): Promise<WPPage> {
   const res = await fetch(
-    `https://seusite.com/wp-json/wp/v2/pages?slug=${slug}&_embed`
+    `https://traine.autojun.com.br/wp-json/wp/v2/pages?slug=${slug}&_embed`
   );
   const data: WPPage[] = await res.json();
   return data[0];
