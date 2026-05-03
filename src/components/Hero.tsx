@@ -43,9 +43,9 @@ const Hero = () => {
           {/*          ↑ se carregou, usa o WP   ↑ senão, mostra o texto padrão */}
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-primary-foreground leading-tight mb-8 animate-fade-up">
-          Transformamos Lares
+          {conteudo?.titulos[1]?.textContent}
           <br />
-          <span className="italic font-normal text-champagne">em Obras de Arte</span>
+          <span className="italic font-normal text-champagne">{conteudo?.titulos[2]?.textContent}</span>
         </h1>
         <p className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '0.3s' }}>
           {conteudo?.paragrafos[0]?.textContent}
