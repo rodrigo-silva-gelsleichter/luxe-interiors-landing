@@ -48,7 +48,7 @@ const Hero = () => {
           <span className="italic font-normal text-champagne">em Obras de Arte</span>
         </h1>
         <p className="font-body text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed opacity-0 animate-fade-up" style={{ animationDelay: '0.3s' }}>
-          Cada projeto é uma expressão única de sofisticação. Design autoral, materiais nobres e atenção obsessiva aos detalhes.
+          {conteudo.paragrafos[0]?.textContent}
         </p>
         <a
           href="#contato"
