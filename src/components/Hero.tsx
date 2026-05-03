@@ -39,7 +39,7 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         {/* titulos[0] = primeiro título do conteúdo da página no WordPress */}
         <p className="font-body text-champagne tracking-[0.35em] uppercase text-sm mb-6 animate-fade-in">
-          {conteudo.titulos[0].textContent}
+          {conteudo.titulos[0]?.textContent}
           {/*          ↑ se carregou, usa o WP   ↑ senão, mostra o texto padrão */}
         </p>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light text-primary-foreground leading-tight mb-8 animate-fade-up">
